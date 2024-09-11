@@ -9,22 +9,21 @@ function TeaFromAdd({ setTeas }) {
   const [comm, setComm] = useState('');
 
   const onHandleSubmit = async (e) => {
-    e.preventDefault();
+    console.log(img);
     try {
-      const response = await axiosRequest.post('/teas', {
-        title,
-        place,
-        img,
-        description,
-        comm,
+      e.preventDefault();
+      const data = new FormData();
+
+      data.append('title', title);
+      data.append('place', place);
+      data.append('image', img);
+      data.append('description', description);
+
+      const response = await axiosRequest.post('/teas', data, {
+        headers: { 'Content-Type': 'multipart/form-data' },
       });
       if (response.status === 201) {
         setTeas((prev) => [...prev, response.data.newTea]);
-        setTitle('');
-        setPlace('');
-        setImg('');
-        setDescription('');
-        setComm('');
       }
     } catch (error) {
       console.log(error.response.data.message);
@@ -46,12 +45,7 @@ function TeaFromAdd({ setTeas }) {
           value={place}
           onChange={(e) => setPlace(e.target.value)}
         />
-        <input
-          placeholder='img'
-          type='text'
-          value={img}
-          onChange={(e) => setImg(e.target.value)}
-        />
+        <input type='file' onChange={(e) => setImg(e.target.files[0])} />
         <input
           placeholder='description'
           type='text'

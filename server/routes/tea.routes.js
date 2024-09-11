@@ -1,5 +1,6 @@
 const teaRouter = require('express').Router();
 const TeaServices = require('../services/Tea.services');
+const uploadUtils = require('../utils/uploadUtils');
 
 teaRouter.get('/', async (req, res) => {
   try {
@@ -23,13 +24,15 @@ teaRouter.get('/:teaId', async (req, res) => {
   }
 });
 
-teaRouter.post('/', async (req, res) => {
+teaRouter.post('/', uploadUtils.single('image'), async (req, res) => {
   try {
     const { title, place, img, description, comm } = req.body;
+    const pathImages = '/img/' + req.file.filename;
+
     const newTea = await TeaServices.createTea({
       title,
       place,
-      img,
+      img: pathImages,
       description,
       comm,
     });
@@ -67,7 +70,7 @@ teaRouter.delete('/:teaId', async (req, res) => {
     const tea = await TeaServices.deleteTea(teaId);
     if (tea) {
       res.status(200).json({ message: 'success' });
-      return
+      return;
     }
     res.status(400).json({ message: 'tea not found' });
   } catch ({ message }) {
