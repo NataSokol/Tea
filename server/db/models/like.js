@@ -2,7 +2,11 @@
 const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class Like extends Model {
-    static associate({ models }) {}
+    static associate( models ) {
+      this.belongsTo(models.Tea, {
+        foreignKey: "teaId"
+      })
+    }
   }
   Like.init(
     {
