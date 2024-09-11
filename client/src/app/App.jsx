@@ -45,8 +45,14 @@ function App() {
           <Route path="/" />
           <Route path="/registration" element={<RegistrationPage />} />
           <Route path="/authorization" element={<AuthorizationPage />} />
-          <Route path="/teas" element={<TeasPage teas={teas} />} />
-          <Route path="/teas/:id" element={<TeaItems teas={teas} />} />
+           <Route
+          path='/teas'
+          element={<TeasPage teas={teas} setTeas={setTeas} />}
+        />
+         <Route
+          path='/teas/:id'
+          element={<TeaItems teas={teas} setTeas={setTeas} />}
+        />
         </Routes>
       </AppContext.Provider>
     </>

@@ -67,6 +67,7 @@ teaRouter.delete('/:teaId', async (req, res) => {
     const tea = await TeaServices.deleteTea(teaId);
     if (tea) {
       res.status(200).json({ message: 'success' });
+      return
     }
     res.status(400).json({ message: 'tea not found' });
   } catch ({ message }) {
