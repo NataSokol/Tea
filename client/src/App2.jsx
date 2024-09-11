@@ -1,6 +1,6 @@
 // src/App.jsx
-import React from 'react';
-import MapComponent from './MapComponent';
+import React from "react";
+import MapComponent from "./MapComponent";
 
 const App = () => {
   return (
