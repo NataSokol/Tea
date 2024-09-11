@@ -29,8 +29,14 @@ function App() {
       <Navbar />
       <Routes>
         <Route path='/' />
-        <Route path='/teas' element={<TeasPage teas={teas} />} />
-        <Route path='/teas/:id' element={<TeaItems teas={teas} />} />
+        <Route
+          path='/teas'
+          element={<TeasPage teas={teas} setTeas={setTeas} />}
+        />
+        <Route
+          path='/teas/:id'
+          element={<TeaItems teas={teas} setTeas={setTeas} />}
+        />
       </Routes>
     </>
   );
