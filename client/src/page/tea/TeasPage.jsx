@@ -1,7 +1,9 @@
+
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import ModalWindow from '../../shared/ui/ModalWindow';
 import TeaFromAdd from './TeaFromAdd';
+import OneTeaPage from "./OneTeaPage";
 
 const TeasPage = ({ teas, setTeas }) => {
   const [active, setActive] = useState(false);
@@ -10,10 +12,13 @@ const TeasPage = ({ teas, setTeas }) => {
     setActive((prev) => !prev);
   };
 
+
   return (
-    <div>
+    <>
       <h1>TeasPage</h1>
+
       <div>
+
         <button onClick={isActive}>Create</button>
         <ModalWindow active={active} setActive={setActive}>
           <TeaFromAdd setTeas={setTeas} teas={teas} />
@@ -28,6 +33,7 @@ const TeasPage = ({ teas, setTeas }) => {
         </div>
       ))}
     </div>
+
   );
 };
 
