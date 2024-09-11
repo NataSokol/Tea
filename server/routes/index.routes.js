@@ -6,9 +6,14 @@ const tokensRouter = require("./token.routes");
 const errorRouter = require("./error.routes");
 
 // маршруты
-// apiRouter.use('/tea', teaRouter);
+
+
 apiRouter.use("/auth", authRouter);
 apiRouter.use("/tokens", tokensRouter);
+
+apiRouter.use('/teas', teaRouter);
+
+
 
 // 404
 apiRouter.use("*", errorRouter);

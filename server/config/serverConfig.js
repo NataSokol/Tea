@@ -1,3 +1,4 @@
+
 const express = require("express");
 const removeHeader = require("../middleware/removeHeader");
 const cookieParser = require("cookie-parser");
@@ -10,3 +11,4 @@ const serverConfig = (app) => {
 };
 
 module.exports = serverConfig;
+
