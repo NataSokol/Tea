@@ -1,19 +1,23 @@
 const apiRouter = require("express").Router();
 
-const teaRouter = require('./tea.routes');
+const teaRouter = require("./tea.routes");
 const authRouter = require("./auth.routes");
 const tokensRouter = require("./token.routes");
+const commRouter = require("./comm.routes");
 const errorRouter = require("./error.routes");
 const likeRouter = require('./like.routes')
 
 // маршруты
 
-
 apiRouter.use("/auth", authRouter);
 apiRouter.use("/tokens", tokensRouter);
 
+
+apiRouter.use("/comments", commRouter);
+
 apiRouter.use('/teas', teaRouter);
 apiRouter.use('/like', likeRouter);
+
 
 
 
