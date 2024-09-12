@@ -5,10 +5,11 @@ import Navbar from "../widgets/navbar/Navbar";
 import AuthorizationPage from "../pages/auth/AuthorizationPage";
 import { Routes, Route } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { axiosRequest } from "../../services/axiosInstance";
+import { axiosRequest } from "../services/axiosInstance";
 import TeasPage from "../page/tea/TeasPage";
 import TeaItems from "../page/tea/TeaItems";
 import "./App.css";
+import { setAccessToken } from "../services/axiosInstance";
 
 function App() {
   const [user, setUser] = useState(undefined);
@@ -21,6 +22,7 @@ function App() {
     const response = await axiosRequest.get("/tokens/refresh");
     if (response.status === 200) {
       setUser(response.data.user);
+      setAccessToken(response.data.accessToken)
     }
   };
 

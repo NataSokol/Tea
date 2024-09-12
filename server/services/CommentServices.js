@@ -25,9 +25,9 @@ class CommentServices {
     }
   }
 
-  static async deleteComment(id, userId) {
+  static async deleteComment(commId, userId) {
     try {
-      const comment = await Comment.findOne({ where: { id, userId } });
+      const comment = await Comment.findOne({ where: { id: commId, userId } });
       if (comment) {
         return comment.destroy();
       }
