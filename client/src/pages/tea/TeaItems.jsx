@@ -1,13 +1,14 @@
-import { AppContext } from '../../app/AppContext';
-import { useParams, useNavigate } from 'react-router-dom';
-import { axiosRequest } from '../../../services/axiosInstance';
-import { useContext, useState } from 'react';
-import ModalWindow from '../../shared/ui/ModalWindow';
-import TeaUp from './TeaFromUp';
+import { AppContext } from "../../app/AppContext";
+import { useParams, useNavigate } from "react-router-dom";
+import { axiosRequest } from "../../services/axiosInstance";
+import { useContext, useState } from "react";
+import ModalWindow from "../../shared/ui/ModalWindow";
+import TeaUp from "./TeaFromUp";
 
 const TeaItems = ({ teas, setTeas }) => {
   const { user, setUser } = useContext(AppContext);
   const [active, setActive] = useState(false);
+  const [comm, setComm] = useState("");
   const navigate = useNavigate();
   const { id } = useParams();
 
