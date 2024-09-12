@@ -16,10 +16,10 @@ router.post("/", verifyAccessToken, async (req, res) => {
   }
 });
 
-router.delete("/:commId", verifyAccessToken, async (req, res) => {
+router.delete("/:userId/:commId", verifyAccessToken, async (req, res) => {
   try {
-    const { commId } = req.params;
-    const userId = res.locals.user.id;
+    const { userId, commId } = req.params;
+
     const comm = await CommentServices.deleteComment(commId, userId);
     if (comm) {
       res.status(200).json({ message: "Success delete" });

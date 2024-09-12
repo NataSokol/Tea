@@ -7,7 +7,6 @@ import TeaFromAdd from './TeaFromAdd';
 const TeasPage = ({ teas, setTeas }) => {
   const [active, setActive] = useState(false);
   const { user, setUser } = useContext(AppContext);
-
   const isActive = () => {
     setActive((prev) => !prev);
   };
@@ -15,7 +14,6 @@ const TeasPage = ({ teas, setTeas }) => {
   return (
     <div>
       <h1>TeasPage</h1>
-
       <div>
         {user?.isAdmin && <button onClick={isActive}>Create</button>}
         <ModalWindow active={active} setActive={setActive}>

@@ -1,9 +1,10 @@
 
 const likeRouter = require('express').Router();
 const LikeServices = require('../services/Like.services')
+const verifyAccessToken = require('../middleware/verifyAccessToken')
 
 
-likeRouter.post('/', async (req, res) => {
+likeRouter.post('/', verifyAccessToken, async (req, res) => {
   try {
     const { userId, teaId } = req.body;
     const newLike = await LikeServices.createLike({
@@ -14,7 +15,7 @@ likeRouter.post('/', async (req, res) => {
     res.status(500).json({ error: message });
   }
 });
-likeRouter.delete('/:userId/:teaId', async (req, res) => {
+likeRouter.delete('/:userId/:teaId', verifyAccessToken, async (req, res) => {
   try {
     const { userId, teaId } = req.params;
     const deleteLike=await LikeServices.deleteLike(userId, teaId)
