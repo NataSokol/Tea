@@ -1,7 +1,4 @@
-
-
-import { useContext, useState } from 'react';
-
+import { useContext, useState } from "react";
 
 import { Link } from "react-router-dom";
 import OneTeaPage from "./OneTeaPage";
@@ -9,25 +6,21 @@ import OneTeaPage from "./OneTeaPage";
 import { AppContext } from "../../app/AppContext";
 
 
-import ModalWindow from '../../shared/ui/ModalWindow';
-import TeaFromAdd from './TeaFromAdd';
+
+
+
+import ModalWindow from "../../shared/ui/ModalWindow";
+import TeaFromAdd from "./TeaFromAdd";
 
 
 const TeasPage = ({ teas, setTeas }) => {
- 
   const [active, setActive] = useState(false);
 
   const { user, setUser } = useContext(AppContext);
 
-  
- 
-
-
-
   const isActive = () => {
     setActive((prev) => !prev);
   };
-
 
   return (
     <div>
@@ -36,12 +29,14 @@ const TeasPage = ({ teas, setTeas }) => {
       <div>
         {user?.isAdmin && <button onClick={isActive}>Create</button>}
 
-             <ModalWindow active={active} setActive={setActive}>
+        <ModalWindow active={active} setActive={setActive}>
           <TeaFromAdd setTeas={setTeas} teas={teas} />
         </ModalWindow>
-        </div>
-      <div>
 
+        </div>
+
+    
+      <div>
         {teas.map((tea) => {
           let flag = false;
           tea.TeaLikes.map((t) => {
@@ -60,11 +55,7 @@ const TeasPage = ({ teas, setTeas }) => {
             />
           );
         })}
-
-      
-
       </div>
-     
     </div>
   );
 };
