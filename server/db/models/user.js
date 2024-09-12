@@ -4,6 +4,7 @@ module.exports = (sequelize, DataTypes) => {
   class User extends Model {
     static associate({ Tea }) {
       this.belongsToMany(Tea, { through: "Likes", foreignKey: "userId" });
+      this.belongsToMany(Tea, { through: "Comments", foreignKey: "userId" });
     }
   }
   User.init(

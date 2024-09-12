@@ -3,13 +3,23 @@ const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class Tea extends Model {
     static associate(models) {
-      this.belongsToMany(models.User, { through: "Likes", foreignKey: "teaId" });
+      this.belongsToMany(models.User, {
+        through: "Likes",
+        foreignKey: "teaId",
+      });
+      this.belongsToMany(models.User, {
+        through: "Comments",
+        foreignKey: "teaId",
+      });
       this.hasMany(models.Like, {
         foreignKey: "teaId",
-        as: "TeaLikes"
-      })
-    };
-
+        as: "TeaLikes",
+      });
+      this.hasMany(models.Comment, {
+        foreignKey: "teaId",
+        as: "TeaComms",
+      });
+    }
   }
   Tea.init(
     {
