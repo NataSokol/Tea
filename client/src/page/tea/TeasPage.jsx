@@ -1,18 +1,28 @@
 
+
+import { useContext, useState } from 'react';
+
+
 import { Link } from "react-router-dom";
 import OneTeaPage from "./OneTeaPage";
-import { useContext } from "react";
+
 import { AppContext } from "../../app/AppContext";
-import { useState } from 'react';
+
+
 import ModalWindow from '../../shared/ui/ModalWindow';
 import TeaFromAdd from './TeaFromAdd';
+import { AppContext } from '../../app/AppContext';
 
 const TeasPage = ({ teas, setTeas }) => {
  
   const [active, setActive] = useState(false);
+
+  const { user, setUser } = useContext(AppContext);
+
   
  
-  const { user } = useContext(AppContext);
+
+
 
   const isActive = () => {
     setActive((prev) => !prev);
@@ -22,8 +32,11 @@ const TeasPage = ({ teas, setTeas }) => {
   return (
     <div>
       <h1>TeasPage</h1>
-      <button onClick={isActive}>Create</button>
-        <ModalWindow active={active} setActive={setActive}>
+
+      <div>
+        {user?.isAdmin && <button onClick={isActive}>Create</button>}
+
+             <ModalWindow active={active} setActive={setActive}>
           <TeaFromAdd setTeas={setTeas} teas={teas} />
         </ModalWindow>
       <div>
