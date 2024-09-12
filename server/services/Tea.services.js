@@ -22,6 +22,7 @@ class TeaServices {
       return 'such tea already exists';
     }
     tea = await Tea.create({ title, place, img, description, comm });
+    tea=await Tea.findOne({where:{id:tea.id}, include:[{model: Like, as:'TeaLikes'}]})
     return tea.get();
   };
 
