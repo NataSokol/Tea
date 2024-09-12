@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { axiosRequest } from '../../../services/axiosInstance';
+import { axiosRequest } from '../../services/axiosInstance';
 
 function TeaFromAdd({ setTeas }) {
   const [title, setTitle] = useState('');
