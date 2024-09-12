@@ -1,8 +1,9 @@
 const { Tea } = require('../db/models');
 const { Like } = require('../db/models')
+const { Comment } = require('../db/models')
 
 class TeaServices {
-  static getAllTea = async () => (await Tea.findAll({include:[{model: Like, as:'TeaLikes'}]})).map((tea) => tea.get());
+  static getAllTea = async () => (await Tea.findAll({include:[{model: Like, as:'TeaLikes'}, {model: Comment, as:'TeaComms'}]})).map((tea) => tea.get());
 
   static getOneTea = async (id) => {
     const tea = await Tea.findByPk(id);
@@ -21,6 +22,7 @@ class TeaServices {
       return 'such tea already exists';
     }
     tea = await Tea.create({ title, place, img, description, comm });
+    tea=await Tea.findOne({where:{id:tea.id}, include:[{model: Like, as:'TeaLikes'}]})
     return tea.get();
   };
 

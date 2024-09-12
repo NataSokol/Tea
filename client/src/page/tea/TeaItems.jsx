@@ -1,13 +1,24 @@
+
+import { useContext } from 'react';
+import { AppContext } from '../../app/AppContext';
 import { useParams, useNavigate } from 'react-router-dom';
 import { axiosRequest } from '../../../services/axiosInstance';
 import { useContext, useState } from 'react';
 import { AppContext } from '../../app/AppContext';
 import ModalWindow from '../../shared/ui/ModalWindow';
 import TeaUp from './TeaFromUp';
+ 
 
+  
 const TeaItems = ({ teas, setTeas }) => {
+
   const { user, setUser } = useContext(AppContext);
+
+
   const [active, setActive] = useState(false);
+  const navigate = useNavigate();
+
+
   const { id } = useParams();
   const navigate = useNavigate();
   
@@ -52,5 +63,6 @@ const TeaItems = ({ teas, setTeas }) => {
     </div>
   );
 };
+ 
 
 export default TeaItems;

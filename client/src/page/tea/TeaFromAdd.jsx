@@ -9,6 +9,7 @@ function TeaFromAdd({ setTeas }) {
   const [comm, setComm] = useState('');
 
   const onHandleSubmit = async (e) => {
+
     try {
       e.preventDefault();
       const data = new FormData();
@@ -17,6 +18,7 @@ function TeaFromAdd({ setTeas }) {
       data.append('place', place);
       data.append('image', img);
       data.append('description', description);
+      data.append('TeaLikes', []);
 
       const response = await axiosRequest.post('/teas', data, {
         headers: { 'Content-Type': 'multipart/form-data' },

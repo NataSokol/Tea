@@ -13,6 +13,9 @@ import "./App.css";
 function App() {
   const [user, setUser] = useState(undefined);
   const [teas, setTeas] = useState([]);
+  
+  
+
 
   const checkUser = async () => {
     const response = await axiosRequest.get("/tokens/refresh");
@@ -39,12 +42,14 @@ function App() {
 
   return (
     <>
+   
       <AppContext.Provider value={{ user, setUser }}>
         <Navbar />
         <Routes>
           <Route path="/" />
           <Route path="/registration" element={<RegistrationPage />} />
           <Route path="/authorization" element={<AuthorizationPage />} />
+
            <Route
           path='/teas'
           element={<TeasPage teas={teas} setTeas={setTeas} />}
@@ -53,6 +58,7 @@ function App() {
           path='/teas/:id'
           element={<TeaItems teas={teas} setTeas={setTeas} />}
         />
+
         </Routes>
       </AppContext.Provider>
     </>

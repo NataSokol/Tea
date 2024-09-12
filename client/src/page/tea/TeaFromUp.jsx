@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { axiosRequest } from '../../../services/axiosInstance';
+import React, { useState } from "react";
+import { axiosRequest } from "../../../services/axiosInstance";
 
 function TeaUp({ tea, teas, setTeas }) {
   const [title, setTitle] = useState(tea.title);
@@ -34,22 +34,22 @@ function TeaUp({ tea, teas, setTeas }) {
   return (
     <form onSubmit={onHandleUpdate}>
       <input
-        type='text'
+        type="text"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
       />
       <input
-        type='text'
+        type="text"
         value={place}
         onChange={(e) => setPlace(e.target.value)}
       />
-      <input type='text' value={img} onChange={(e) => setImg(e.target.value)} />
+      <input type="text" value={img} onChange={(e) => setImg(e.target.value)} />
       <input
-        type='text'
+        type="text"
         value={description}
         onChange={(e) => setDescription(e.target.value)}
       />
-      <button type='submit'>add</button>
+      <button type="submit">add</button>
     </form>
   );
 }
