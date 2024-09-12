@@ -1,6 +1,9 @@
+import { useContext } from 'react';
 import { useParams } from 'react-router-dom';
+import { AppContext } from '../../app/AppContext';
 
 const TeaItems = ({ teas }) => {
+  const { user } = useContext(AppContext);
   const { id } = useParams();
   const tea = teas.find((t) => t.id === parseInt(id));
 

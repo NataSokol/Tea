@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom";
 import OneTeaPage from "./OneTeaPage";
+import { useContext } from "react";
+import { AppContext } from "../../app/AppContext";
 
-const TeasPage = ({ user, teas, setTeas }) => {
+const TeasPage = ({ teas, setTeas }) => {
+  const { user } = useContext(AppContext);
   return (
     <>
       <h1>TeasPage</h1>
@@ -18,10 +21,10 @@ const TeasPage = ({ user, teas, setTeas }) => {
             <OneTeaPage
               tea={tea}
               key={tea.id}
-              setMusic={setTeas}
+              setTeas={setTeas}
               user={user}
               flag={flag}
-              
+              teas={teas}
             />
           );
         })}
