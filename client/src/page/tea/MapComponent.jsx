@@ -9,12 +9,17 @@ import { Vector as VectorLayer } from "ol/layer";
 import VectorSource from "ol/source/Vector";
 import Feature from "ol/Feature";
 import Point from "ol/geom/Point";
-import { Style, Fill, Stroke, Circle } from "ol/style";
+import { Style, Fill, Stroke, Circle,Icon } from "ol/style";
 import Overlay from "ol/Overlay";
 import { Select } from "ol/interaction";
 import { pointerMove } from "ol/events/condition";
+import { useNavigate } from "react-router-dom";
 
-const MapComponent = () => {
+const MapComponent = ({ teas, setTeas }) => {
+  console.log(teas);
+  
+  
+  const navigate = useNavigate();
   const mapRef = useRef(null); // Реф для карты
   const [popup, setPopup] = useState({
     visible: false,
@@ -24,44 +29,25 @@ const MapComponent = () => {
   });
 
   useEffect(() => {
-    const coordinates = [
-      {
-        coords: [37.6173, 55.7558],
-        name: "Москва",
-        description: "Липтон",
-      },
-      {
-        coords: [30.3158, 59.9342],
-        name: "Санкт-Петербург",
-        description: "ЭрлГрэй",
-      },
-      {
-        coords: [43.2405, 76.9456],
-        name: "Алматы",
-        description: "Уруру",
-      },
-      {
-        coords: [74.6176, 42.8311],
-        name: "Бишкек",
-        description: "Получилось",
-      },
-    ];
+
+    const coordinates = teas;
 
     const features = coordinates.map((coord) => {
       const feature = new Feature({
-        geometry: new Point(fromLonLat(coord.coords)),
+        geometry: new Point(fromLonLat([coord.coordX, coord.coordY])),
       });
       feature.setStyle(
         new Style({
-          image: new Circle({
-            radius: 8,
-            fill: new Fill({ color: "blue" }),
-            stroke: new Stroke({ color: "white", width: 2 }),
+          image: new Icon({
+            src: "http://localhost:3000/img/icon-point.png", // Замените на URL вашей иконки с коноплей
+            scale: 0.5,
           }),
         })
       );
-      feature.set("name", coord.name);
+      feature.set("title", coord.title);
       feature.set("description", coord.description);
+      feature.set("id", coord.id);
+
       return feature;
     });
 
@@ -87,18 +73,25 @@ const MapComponent = () => {
       }),
     });
 
+    map.on("click", function (event) {
+      map.forEachFeatureAtPixel(event.pixel, function (feature) {
+        const id = feature.values_.id;
+        navigate(`/teas/${id}`);
+        //  window.location = "/"
+      });
+    });
     // Обработчик для отображения всплывающего окна при наведении
-    map.on('pointermove', (event) => {
+    map.on("pointermove", (event) => {
       const pixel = map.getEventPixel(event.originalEvent);
       const feature = map.getFeaturesAtPixel(pixel)[0];
       if (feature) {
-        const name = feature.get("name");
+        const title = feature.get("title");
         const description = feature.get("description");
         const coordinates = feature.getGeometry().getCoordinates();
         setPopup({
           visible: true,
           position: [event.originalEvent.clientX, event.originalEvent.clientY],
-          name,
+          title,
           description,
         });
       } else {
@@ -118,7 +111,7 @@ const MapComponent = () => {
 
   return (
     <div>
-      <div ref={mapRef} style={{ width: "100%", height: "500px" }} />
+      <div ref={mapRef} style={{ width: "400%", height: "500px" }} />
       {popup.visible && (
         <div
           style={{
@@ -132,7 +125,9 @@ const MapComponent = () => {
             left: `${popup.position[0]}px`,
           }}
         >
-          <div><strong>{popup.name}</strong></div>
+          <div>
+            <strong>{popup.title}</strong>
+          </div>
           <div>{popup.description}</div>
         </div>
       )}

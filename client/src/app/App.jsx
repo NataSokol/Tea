@@ -9,7 +9,11 @@ import { axiosRequest } from "../services/axiosInstance";
 import TeasPage from "../page/tea/TeasPage";
 import TeaItems from "../page/tea/TeaItems";
 import "./App.css";
+
+import MapComponent from "../page/tea/MapComponent";
+
 import { setAccessToken } from "../services/axiosInstance";
+
 
 function App() {
   const [user, setUser] = useState(undefined);
@@ -60,7 +64,10 @@ function App() {
           path='/teas/:id'
           element={<TeaItems teas={teas} setTeas={setTeas} />}
         />
-
+       <Route
+          path='/map'
+          element={<MapComponent teas={teas} setTeas={setTeas} />}
+        />
         </Routes>
       </AppContext.Provider>
     </>

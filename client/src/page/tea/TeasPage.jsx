@@ -5,8 +5,13 @@ import OneTeaPage from "./OneTeaPage";
 
 import { AppContext } from "../../app/AppContext";
 
+
+
+
+
 import ModalWindow from "../../shared/ui/ModalWindow";
 import TeaFromAdd from "./TeaFromAdd";
+
 
 const TeasPage = ({ teas, setTeas }) => {
   const [active, setActive] = useState(false);
@@ -27,7 +32,10 @@ const TeasPage = ({ teas, setTeas }) => {
         <ModalWindow active={active} setActive={setActive}>
           <TeaFromAdd setTeas={setTeas} teas={teas} />
         </ModalWindow>
-      </div>
+
+        </div>
+
+    
       <div>
         {teas.map((tea) => {
           let flag = false;

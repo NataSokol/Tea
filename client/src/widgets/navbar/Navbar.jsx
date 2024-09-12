@@ -36,6 +36,9 @@ function Navbar() {
         <li>
           <NavLink to="/teas">Teas</NavLink>
         </li>
+        <li>
+          <NavLink to="/map">Map</NavLink>
+        </li>
       </ul>
       {user && <button onClick={onHandleLogout}>Log out</button>}
     </div>

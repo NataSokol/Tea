@@ -5,6 +5,7 @@ import { useContext, useState } from "react";
 import ModalWindow from "../../shared/ui/ModalWindow";
 import TeaUp from "./TeaFromUp";
 
+
 const TeaItems = ({ teas, setTeas }) => {
   const { user, setUser } = useContext(AppContext);
   const [comm, setComm] = useState("");
