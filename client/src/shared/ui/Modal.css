@@ -19,11 +19,12 @@
 }
 
 .modal__content {
-  padding: 50px;
-  border-radius: 12px;
-  background-color: #fafafb;
-  max-width: 380px;
-  font-size: 16px;
-  font-weight: 600;
+  width: 350px;
+  padding: 40px;
+  border-radius: 32px;
+  background-color: #9ec77c;
+  max-width: 410px;
+  font-size: 18px;
+  font-weight: 20;
   z-index: 2;
 }

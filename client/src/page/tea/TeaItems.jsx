@@ -1,19 +1,14 @@
-import { AppContext } from "../../app/AppContext";
-import { useParams, useNavigate } from "react-router-dom";
-import { axiosRequest } from "../../services/axiosInstance";
-import { useContext, useState } from "react";
-import ModalWindow from "../../shared/ui/ModalWindow";
-import TeaUp from "./TeaFromUp";
-
+import { AppContext } from '../../app/AppContext';
+import { useParams, useNavigate } from 'react-router-dom';
+import { axiosRequest } from '../../../services/axiosInstance';
+import { useContext, useState } from 'react';
+import ModalWindow from '../../shared/ui/ModalWindow';
+import TeaUp from './TeaFromUp';
 
 const TeaItems = ({ teas, setTeas }) => {
   const { user, setUser } = useContext(AppContext);
-  const [comm, setComm] = useState("");
-
   const [active, setActive] = useState(false);
-
   const navigate = useNavigate();
-
   const { id } = useParams();
 
   const tea = teas.find((t) => t.id === parseInt(id));
@@ -70,7 +65,6 @@ const TeaItems = ({ teas, setTeas }) => {
         teaId: tea.id,
         comm,
       });
-      console.log(response.data);
 
       if (response.status === 201) {
         setTeas((prev) =>
@@ -122,7 +116,7 @@ const TeaItems = ({ teas, setTeas }) => {
         {user?.isAdmin && <button onClick={isActive}>Update</button>}
         {user?.isAdmin && <button onClick={onHandleDelete}>Delete</button>}
         <ModalWindow active={active} setActive={setActive}>
-          <TeaUp tea={tea} setTeas={setTeas} />
+          <TeaUp tea={tea} setTeas={setTeas} setActive={setActive} />
         </ModalWindow>
       </>
     </div>
