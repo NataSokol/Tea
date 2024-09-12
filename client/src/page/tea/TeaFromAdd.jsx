@@ -18,7 +18,7 @@ function TeaFromAdd({ setTeas }) {
       data.append('place', place);
       data.append('image', img);
       data.append('description', description);
-      data.append('TeaLikes', []);
+     
 
       const response = await axiosRequest.post('/teas', data, {
         headers: { 'Content-Type': 'multipart/form-data' },

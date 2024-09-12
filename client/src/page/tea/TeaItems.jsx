@@ -1,10 +1,10 @@
 
-import { useContext } from 'react';
+
 import { AppContext } from '../../app/AppContext';
 import { useParams, useNavigate } from 'react-router-dom';
 import { axiosRequest } from '../../../services/axiosInstance';
 import { useContext, useState } from 'react';
-import { AppContext } from '../../app/AppContext';
+
 import ModalWindow from '../../shared/ui/ModalWindow';
 import TeaUp from './TeaFromUp';
  
@@ -20,7 +20,7 @@ const TeaItems = ({ teas, setTeas }) => {
 
 
   const { id } = useParams();
-  const navigate = useNavigate();
+ 
   
   const tea = teas.find((t) => t.id === parseInt(id));
 

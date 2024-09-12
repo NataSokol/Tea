@@ -33,8 +33,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.TEXT,
       },
       img: {
-        defaultValue:
-          "https://www.newshub.co.nz/home/lifestyle/2019/08/the-top-five-cat-memes-of-all-time-rated/_jcr_content/par/video/image.dynimg.1280.q75.jpg/v1565234972425/KNOWYOURMEME-sad-cat-crying-1120.jpg",
+        defaultValue: "https://i.pinimg.com/564x/0d/82/19/0d8219115f72a76aaec8f97f61db1ac9.jpg",
         type: DataTypes.TEXT,
       },
       description: {
@@ -44,6 +43,17 @@ module.exports = (sequelize, DataTypes) => {
       comm: {
         type: DataTypes.TEXT,
       },
+      coordX: {
+        defaultValue: 37.6173,
+        type: DataTypes.FLOAT,
+
+      },
+      coordY: {
+        defaultValue: 55.7558,
+        type: DataTypes.FLOAT,
+
+      },
+
     },
     {
       sequelize,

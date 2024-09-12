@@ -11,7 +11,7 @@ import { AppContext } from "../../app/AppContext";
 
 import ModalWindow from '../../shared/ui/ModalWindow';
 import TeaFromAdd from './TeaFromAdd';
-import { AppContext } from '../../app/AppContext';
+
 
 const TeasPage = ({ teas, setTeas }) => {
  
@@ -39,6 +39,7 @@ const TeasPage = ({ teas, setTeas }) => {
              <ModalWindow active={active} setActive={setActive}>
           <TeaFromAdd setTeas={setTeas} teas={teas} />
         </ModalWindow>
+        </div>
       <div>
 
         {teas.map((tea) => {
