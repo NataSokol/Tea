@@ -1,27 +1,16 @@
-
-import { useContext } from 'react';
 import { AppContext } from '../../app/AppContext';
 import { useParams, useNavigate } from 'react-router-dom';
 import { axiosRequest } from '../../../services/axiosInstance';
 import { useContext, useState } from 'react';
-import { AppContext } from '../../app/AppContext';
 import ModalWindow from '../../shared/ui/ModalWindow';
 import TeaUp from './TeaFromUp';
- 
 
-  
 const TeaItems = ({ teas, setTeas }) => {
-
   const { user, setUser } = useContext(AppContext);
-
-
   const [active, setActive] = useState(false);
   const navigate = useNavigate();
-
-
   const { id } = useParams();
-  const navigate = useNavigate();
-  
+
   const tea = teas.find((t) => t.id === parseInt(id));
 
   const isActive = () => {
@@ -57,12 +46,11 @@ const TeaItems = ({ teas, setTeas }) => {
         {user?.isAdmin && <button onClick={isActive}>Update</button>}
         {user?.isAdmin && <button onClick={onHandleDelete}>Delete</button>}
         <ModalWindow active={active} setActive={setActive}>
-          <TeaUp tea={tea} setTeas={setTeas} />
+          <TeaUp tea={tea} setTeas={setTeas} setActive={setActive} />
         </ModalWindow>
       </>
     </div>
   );
 };
- 
 
 export default TeaItems;

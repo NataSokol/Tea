@@ -1,24 +1,20 @@
-import RegistrationPage from "../pages/auth/RegistrationPage";
-import { AppContext } from "./AppContext";
-
-import Navbar from "../widgets/navbar/Navbar";
-import AuthorizationPage from "../pages/auth/AuthorizationPage";
-import { Routes, Route } from "react-router-dom";
-import { useEffect, useState } from "react";
-import { axiosRequest } from "../../services/axiosInstance";
-import TeasPage from "../page/tea/TeasPage";
-import TeaItems from "../page/tea/TeaItems";
-import "./App.css";
+import { AppContext } from './AppContext';
+import { Routes, Route } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { axiosRequest } from '../../services/axiosInstance';
+import RegistrationPage from '../pages/auth/RegistrationPage';
+import AuthorizationPage from '../pages/auth/AuthorizationPage';
+import TeasPage from '../page/tea/TeasPage';
+import TeaItems from '../page/tea/TeaItems';
+import Navbar from '../widgets/navbar/Navbar';
+import './App.css';
 
 function App() {
   const [user, setUser] = useState(undefined);
   const [teas, setTeas] = useState([]);
-  
-  
-
 
   const checkUser = async () => {
-    const response = await axiosRequest.get("/tokens/refresh");
+    const response = await axiosRequest.get('/tokens/refresh');
     if (response.status === 200) {
       setUser(response.data.user);
     }
@@ -26,7 +22,7 @@ function App() {
 
   const getAllTea = async () => {
     try {
-      const response = await axiosRequest.get("/teas");
+      const response = await axiosRequest.get('/teas');
       if (response.status === 200) {
         setTeas(response.data);
       }
@@ -42,23 +38,21 @@ function App() {
 
   return (
     <>
-   
       <AppContext.Provider value={{ user, setUser }}>
         <Navbar />
         <Routes>
-          <Route path="/" />
-          <Route path="/registration" element={<RegistrationPage />} />
-          <Route path="/authorization" element={<AuthorizationPage />} />
+          <Route path='/' />
+          <Route path='/registration' element={<RegistrationPage />} />
+          <Route path='/authorization' element={<AuthorizationPage />} />
 
-           <Route
-          path='/teas'
-          element={<TeasPage teas={teas} setTeas={setTeas} />}
-        />
-         <Route
-          path='/teas/:id'
-          element={<TeaItems teas={teas} setTeas={setTeas} />}
-        />
-
+          <Route
+            path='/teas'
+            element={<TeasPage teas={teas} setTeas={setTeas} />}
+          />
+          <Route
+            path='/teas/:id'
+            element={<TeaItems teas={teas} setTeas={setTeas} />}
+          />
         </Routes>
       </AppContext.Provider>
     </>
