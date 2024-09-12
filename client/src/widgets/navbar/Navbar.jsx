@@ -30,6 +30,12 @@ function Navbar() {
         <li>
           <NavLink to="/authorization">Authorization</NavLink>
         </li>
+        <li>
+          <NavLink to="/">Home</NavLink>
+        </li>
+        <li>
+          <NavLink to="/teas">Teas</NavLink>
+        </li>
       </ul>
       {user && <button onClick={onHandleLogout}>Log out</button>}
     </div>

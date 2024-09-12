@@ -1,12 +1,24 @@
+
+import { useContext } from 'react';
+
+import { AppContext } from '../../app/AppContext';
 import { useParams, useNavigate } from 'react-router-dom';
+
+
+
+
 import { axiosRequest } from '../../../services/axiosInstance';
 import { useState } from 'react';
 import ModalWindow from '../../shared/ui/ModalWindow';
 import TeaUp from './TeaFromUp';
-
+ 
+ const TeaItems = ({ teas }) => {
+  const { user } = useContext(AppContext); 
+  
 const TeaItems = ({ teas, setTeas }) => {
   const [active, setActive] = useState(false);
   const navigate = useNavigate();
+
   const { id } = useParams();
   const tea = teas.find((t) => t.id === parseInt(id));
 
