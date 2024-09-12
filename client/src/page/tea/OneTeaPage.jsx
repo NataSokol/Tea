@@ -32,9 +32,6 @@ function OneTeaPage({ teas, setTeas, tea, flag }) {
   };
 
   const UnLike = async () => {
-    console.log(user.id);
-    console.log(tea.id);
-
     await axiosRequest.delete(`/like/${user.id}/${tea.id}`);
     setTeas((prev) =>
       prev.map((el) =>
