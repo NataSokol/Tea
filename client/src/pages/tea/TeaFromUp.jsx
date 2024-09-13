@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { axiosRequest } from '../../services/axiosInstance';
 
 function TeaUp({ tea, teas, setTeas, setActive }) {
@@ -9,24 +9,34 @@ function TeaUp({ tea, teas, setTeas, setActive }) {
   const [coordX, setCoordX] = useState(0);
   const [coordY, setCoordY] = useState(0);
 
+  useEffect(() => {
+    if (tea) {
+      setTitle(tea.title || '');
+      setPlace(tea.place || '');
+      setDescription(tea.description || '');
+      setCoordX(tea.coordX || 0);
+      setCoordY(tea.coordY || 0);
+    }
+  }, [tea]);
+
   const onHandleUpdate = async (e) => {
+    e.preventDefault();
+
+    const data = new FormData();
+    data.append('title', title || '');
+    data.append('place', place || '');
+    if (img) {
+      data.append('image', img); // Проверяем наличие изображения
+    }
+    data.append('description', description || '');
+    data.append('coordX', coordX || '');
+    data.append('coordY', coordY || '');
+
     try {
-      e.preventDefault();
-
-      const data = new FormData();
-
-      data.append('title', title);
-      data.append('place', place);
-      if (img) {
-        data.append('image', img);
-      }
-      data.append('description', description);
-      data.append('coordX', coordX);
-      data.append('coordY', coordY);
-
       const response = await axiosRequest.put(`/teas/${tea.id}`, data, {
         headers: { 'Content-Type': 'multipart/form-data' },
       });
+
       if (response.status === 200) {
         setTeas((prev) =>
           prev.map((t) =>

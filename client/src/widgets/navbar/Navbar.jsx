@@ -1,17 +1,23 @@
 import React, { useContext } from "react";
-import { NavLink } from "react-router-dom";
+
+
+
+import { NavLink, useNavigate } from "react-router-dom";
+
 import { AppContext } from "../../app/AppContext";
 import { axiosRequest } from "../../services/axiosInstance";
 import "./Navbar.css";
 
 function Navbar() {
   const { user, setUser } = useContext(AppContext);
+  const navigate = useNavigate();
 
   const onHandleLogout = async () => {
     try {
       const response = await axiosRequest.delete("/auth/logout");
       if (response.status === 200) {
         setUser(null);
+        navigate("/");
         return;
       }
     } catch ({ response }) {
@@ -28,33 +34,39 @@ function Navbar() {
       </div>
       <ul className="navbar-links">
         <li>
-          <NavLink to="/" className="nav-link">
-            Main
+          <NavLink to="/" className="nav-link">Главная
           </NavLink>
         </li>
-        <li>
+
+     
+         
+           <li>
           <NavLink to="/favorites" className="nav-link">
             favorites
           </NavLink>
         </li>
+       
+
+            
         <li>
           <NavLink to="/teas" className="nav-link">
-            Teas
+            Чай
+
           </NavLink>
         </li>
         <li>
           <NavLink to="/map" className="nav-link">
-            Map
+
+            Карта
           </NavLink>
         </li>
-        <li>
-          <NavLink to="/registration" className="nav-link">
-            Registration
-          </NavLink>
-        </li>
+        
+  
+         
         <li>
           <NavLink to="/authorization" className="nav-link">
-            Authorization
+            Авторизация
+
           </NavLink>
         </li>
       </ul>

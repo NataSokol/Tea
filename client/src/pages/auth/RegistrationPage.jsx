@@ -1,6 +1,8 @@
 import React, { useContext, useState } from "react";
 import { AppContext } from "../../app/AppContext";
 import { axiosRequest, setAccessToken } from "../../services/axiosInstance";
+import { useNavigate } from "react-router-dom";
+import "../css/RegistrationPage.css";
 function RegistrationPage() {
   const { setUser } = useContext(AppContext);
   const [name, setName] = useState("");
@@ -9,6 +11,7 @@ function RegistrationPage() {
   const [checkPass, setCheckPass] = useState("");
   const [avatar, setAvatar] = useState("");
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
   const onHandleSubmit = async (e) => {
     try {
       e.preventDefault();
@@ -22,6 +25,7 @@ function RegistrationPage() {
         if (response.status === 201) {
           setUser(response.data.user);
           setAccessToken(response.data.accessToken);
+          navigate("/teas");
           return;
         }
       }
@@ -31,41 +35,46 @@ function RegistrationPage() {
     }
   };
   return (
-    <div>
-      <h1>Registration</h1>
+    <div className="registration">
+      <h1>Регистрация</h1>
       {error && <span>{error}</span>}
-      <form onSubmit={onHandleSubmit}>
+      <form onSubmit={onHandleSubmit} className="registration-form">
         <input
           type="text"
-          placeholder="Name"
+          placeholder="Введите имя"
           value={name}
           onChange={(e) => setName(e.target.value)}
+          className="registration-form__input"
         />
         <input
           type="email"
-          placeholder="Email"
+          placeholder="Введите почту"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          className="registration-form__input"
         />
         <input
           type="password"
-          placeholder="Password"
+          placeholder="Введите пароль"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          className="registration-form__input"
         />
         <input
           type="password"
-          placeholder="Check password"
+          placeholder="Введите пароль повторно"
           value={checkPass}
           onChange={(e) => setCheckPass(e.target.value)}
+          className="registration-form__input"
         />
         <input
           type="text"
-          placeholder="Avatar"
+          placeholder="Выберите аватар"
           value={avatar}
           onChange={(e) => setAvatar(e.target.value)}
+          className="registration-form__input"
         />
-        <button type="submit">Sign up</button>
+        <button type="submit" className="registration-form__button">Зарегистрироваться</button>
       </form>
     </div>
   );
