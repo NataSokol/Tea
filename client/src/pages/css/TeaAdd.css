@@ -39,6 +39,7 @@
 
 /* кнопка загрузки */
 .file_upload {
+  text-align: center;
   margin-top: 20px;
   width: 93%;
   display: inline-block;
@@ -47,12 +48,13 @@
   background-color: #317033;
   color: white;
   border-radius: 7px;
-  font-size: 13px;
+  font-size: 12px;
   transition: background-color 0.2s ease-in-out;
 }
 
 .file_upload:hover {
   background-color: #45a049;
+  transform: scale(1.05);
 }
 
 /* кнопка Add */
@@ -63,7 +65,7 @@
   color: white;
   border-radius: 7px;
   border: none;
-  font-size: 14px;
+  font-size: 12px;
   transition: background-color 0.2s ease-in-out;
 }
 

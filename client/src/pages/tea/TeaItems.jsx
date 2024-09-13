@@ -4,7 +4,7 @@ import { axiosRequest } from '../../services/axiosInstance';
 import { useContext, useState } from 'react';
 import ModalWindow from '../../shared/ui/ModalWindow';
 import TeaUp from './TeaFromUp';
-import '../css/TeaItems.css'
+import '../css/TeaItems.css';
 
 const TeaItems = ({ teas, setTeas }) => {
   const { user, setUser } = useContext(AppContext);
@@ -85,37 +85,44 @@ const TeaItems = ({ teas, setTeas }) => {
   };
 
   return (
-    <div className='tea-item-container'>
+    <div className='tea-item-container tea-item-container-specific'>
       <h3>{tea.title}</h3>
       <p>{tea.place}</p>
-      <img src={tea.img} alt={tea.title} />
+      <div className='tea-item-image'>
+        <img className='tea-item-image' src={tea.img} alt={tea.title} />
+      </div>
       <p>{tea.description}</p>
       <div className='comments'>
-        <h4>Комментариий</h4>
+        <h4>Комментарии</h4>
         {tea.TeaComms &&
           tea.TeaComms.map((el) => (
             <div className='comment' key={el.id}>
               <p>{el.comm}</p>
               {tea.TeaComms.length > 0 && user?.id === el.userId && (
-                <button onClick={() => onHandleDeleteComm(el.id)}>
+                <button
+                  className='delete-button'
+                  onClick={() => onHandleDeleteComm(el.id)}
+                >
                   Удалить
                 </button>
               )}
             </div>
           ))}
-        <form onSubmit={onHandleSubmitComm}>
-          <input
-            type='text'
-            placeholder='Your comment...'
-            value={comm}
-            onChange={(e) => setComm(e.target.value)}
-          />
-          <button type='submit'>Добавить комментариий</button>
-        </form>
+        <div className='comment-form-container'>
+          <form onSubmit={onHandleSubmitComm}>
+            <input
+              type='text'
+              placeholder='Ваш комментарий...'
+              value={comm}
+              onChange={(e) => setComm(e.target.value)}
+            />
+            <button className='button-add' type='submit'>Добавить комментарий</button>
+          </form>
+        </div>
       </div>
       <div className='admin-buttons'>
-        {user?.isAdmin && <button onClick={isActive}>Обновить</button>}
-        {user?.isAdmin && <button onClick={onHandleDelete}>Удалить</button>}
+        {user?.isAdmin && <button className='update-button' onClick={isActive}>Обновить</button>}
+        {user?.isAdmin && <button className='delete-button-admin' onClick={onHandleDelete}>Удалить</button>}
       </div>
       <ModalWindow active={active} setActive={setActive}>
         <TeaUp tea={tea} setTeas={setTeas} setActive={setActive} />
