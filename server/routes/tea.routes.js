@@ -26,7 +26,7 @@ teaRouter.get('/:teaId', async (req, res) => {
 
 teaRouter.post('/', uploadUtils.single('image'), async (req, res) => {
   try {
-    const { title, place, img, description, comm } = req.body;
+    const { title, place, img, description, comm, coordX, coordY } = req.body;
     const pathImages = '/img/' + req.file.filename;
 
     const newTea = await TeaServices.createTea({
@@ -35,6 +35,8 @@ teaRouter.post('/', uploadUtils.single('image'), async (req, res) => {
       img: pathImages,
       description,
       comm,
+      coordX,
+      coordY,
     });
     res.status(201).json({ message: 'success', newTea });
   } catch ({ message }) {
@@ -42,18 +44,24 @@ teaRouter.post('/', uploadUtils.single('image'), async (req, res) => {
   }
 });
 
-teaRouter.put('/:teaId', async (req, res) => {
+teaRouter.put('/:teaId', uploadUtils.single('image'), async (req, res) => {
   try {
     const { teaId } = req.params;
-    const { title, place, img, description, comm } = req.body;
+    const { title, place, description, coordX, coordY } = req.body;
+    const pathImages = '/img/' + req.file.filename;
 
-    const tea = await TeaServices.updateTea(teaId, {
+    const updatedData = {
       title,
       place,
-      img,
       description,
-      comm,
-    });
+      coordX,
+      coordY,
+    };
+
+    if (pathImages) {
+      updatedData.img = pathImages;
+    }
+    const tea = await TeaServices.updateTea(teaId, updatedData);
     if (tea) {
       res.status(200).json({ message: 'success', tea });
       return;
