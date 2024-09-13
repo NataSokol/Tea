@@ -1,4 +1,3 @@
-// src/MapComponent.jsx
 import React, { useEffect, useRef, useState } from "react";
 import "ol/ol.css";
 import { fromLonLat } from "ol/proj";
@@ -9,20 +8,20 @@ import { Vector as VectorLayer } from "ol/layer";
 import VectorSource from "ol/source/Vector";
 import Feature from "ol/Feature";
 import Point from "ol/geom/Point";
-import { Style, Fill, Stroke, Circle,Icon } from "ol/style";
+import { Style, Fill, Stroke, Circle, Icon } from "ol/style";
 import Overlay from "ol/Overlay";
 import { Select } from "ol/interaction";
 import { pointerMove } from "ol/events/condition";
 import { useNavigate } from "react-router-dom";
 
-const MapComponent = ({ teas, setTeas }) => {  
+const MapComponent = ({ teas, setTeas }) => {
   const navigate = useNavigate();
   const mapRef = useRef(null); // Реф для карты
   const [popup, setPopup] = useState({
     visible: false,
     position: [0, 0],
     name: "",
-    description: "",
+    img: "",
   });
 
   useEffect(() => {
@@ -40,7 +39,7 @@ const MapComponent = ({ teas, setTeas }) => {
         })
       );
       feature.set("title", coord.title);
-      feature.set("description", coord.description);
+      feature.set("img", coord.img);
       feature.set("id", coord.id);
       return feature;
     });
@@ -80,20 +79,20 @@ const MapComponent = ({ teas, setTeas }) => {
       const feature = map.getFeaturesAtPixel(pixel)[0];
       if (feature) {
         const title = feature.get("title");
-        const description = feature.get("description");
+        const img = feature.get("img");
         const coordinates = feature.getGeometry().getCoordinates();
         setPopup({
           visible: true,
           position: [event.originalEvent.clientX, event.originalEvent.clientY],
           title,
-          description,
+          img,
         });
       } else {
         setPopup({
           visible: false,
           position: [0, 0],
           name: "",
-          description: "",
+          img: "",
         });
       }
     });
@@ -105,7 +104,7 @@ const MapComponent = ({ teas, setTeas }) => {
 
   return (
     <div>
-      <div ref={mapRef} style={{ width: "400%", height: "500px" }} />
+      <div ref={mapRef} style={{ width: "100%", height: "1000px" }} />
       {popup.visible && (
         <div
           style={{
@@ -114,15 +113,16 @@ const MapComponent = ({ teas, setTeas }) => {
             padding: "10px",
             border: "1px solid black",
             borderRadius: "3px",
-            transform: "translate(-50%, -100%)",
+            transform: "translate(-50%, -150%)",
             top: `${popup.position[1]}px`,
             left: `${popup.position[0]}px`,
           }}
         >
+          <img src={popup.img} alt="kartinka" />
+
           <div>
             <strong>{popup.title}</strong>
           </div>
-          <div>{popup.description}</div>
         </div>
       )}
     </div>
