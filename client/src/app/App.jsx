@@ -9,6 +9,7 @@ import TeasPage from "../pages/tea/TeasPage";
 import TeaItems from "../pages/tea/TeaItems";
 import Navbar from "../widgets/navbar/Navbar";
 import MapComponent from "../pages/tea/MapComponent";
+import NotFound from "../pages/notFound/notFound";
 import "./App.css";
 
 import FavoritsPage from "../pages/tea/FavoritsPage";
@@ -68,6 +69,7 @@ function App() {
             path="/map"
             element={<MapComponent teas={teas} setTeas={setTeas} />}
           />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </AppContext.Provider>
     </>
