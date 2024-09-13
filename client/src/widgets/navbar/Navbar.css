@@ -29,10 +29,12 @@
     color: white;
     text-decoration: none;
     font-size: 1.7rem;
+    transition: 0.5s ease;
 }
 
 .nav-link:hover {
-    color: #cfb262;
+    color: #ffe372;
+    transition: 0.5s ease;
 }
 
 /* button */
