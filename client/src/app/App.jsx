@@ -10,6 +10,7 @@ import TeaItems from "../pages/tea/TeaItems";
 import Navbar from "../widgets/navbar/Navbar";
 import MapComponent from "../pages/tea/MapComponent";
 import "./App.css";
+import MainPage from "../pages/main/MainPage";
 
 function App() {
   const [user, setUser] = useState(undefined);
@@ -44,7 +45,7 @@ function App() {
       <AppContext.Provider value={{ user, setUser }}>
         <Navbar />
         <Routes>
-          <Route path="/" />
+          <Route path="/" element={<MainPage />}/>
           <Route path="/registration" element={<RegistrationPage />} />
           <Route path="/authorization" element={<AuthorizationPage />} />
 
