@@ -15,7 +15,7 @@ const TeasPage = ({ teas, setTeas }) => {
   return (
     <div className='teas-page-container'>
       <div className='teas-page-header'>
-        <h1>TeasPage</h1>
+        <h1>Чаёчки</h1>
       </div>
       <div className='teas-page-button'>
         {user?.isAdmin && <button onClick={isActive}>Create</button>}

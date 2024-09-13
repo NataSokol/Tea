@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { axiosRequest } from "../../services/axiosInstance";
 import OneTeaPage from "./OneTeaPage";
 import { AppContext } from "../../app/AppContext";
+import '../css/FavoritsPage.css'
 
 function FavoritsPage({teas, setTeas}) {
   const { user } = useContext(AppContext);
@@ -11,7 +12,7 @@ function FavoritsPage({teas, setTeas}) {
 
   return (
     <>
-      <div>FavoritsPage</div>
+      <h1 className="favorite__title">Любимчики</h1>
       <div className="teas-page-card-container">
         {teas &&
           teas.map((tea) => {
