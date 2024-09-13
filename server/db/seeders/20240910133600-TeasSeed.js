@@ -1,36 +1,41 @@
-"use strict";
+'use strict';
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.bulkInsert(
-      "Teas",
+      'Teas',
       [
         {
           title: 'Green Tea',
           place: 'China',
           img: 'https://arysahulatbazar.pk/wp-content/uploads/2024/02/image-24.jpeg',
           description:
+
             'Освежающий чай из неокисленных листьев, известный своими полезными свойствами для здоровья, дарящий спокойствие.',
           comm: 'Отлично подходит для ускорения метаболизма.',
           coordX: 116.3970,
           coordY: 39.9042,
+
         },
         {
           title: 'Black Tea',
           place: 'India',
           img: 'https://mixsp.ru/files/b49/b49161f01b5832fb44987da07e062ef0.png',
           description:
+
             'Крепкий, полностью окисленный чай с насыщенным вкусом, часто употребляется с молоком, создающий эффект расслабления.',
           comm: 'Идеален для утреннего заряда.',
           coordX: 77.9629,
           coordY: 28.5937,
+
         },
         {
           title: 'Oolong Tea',
           place: 'Taiwan',
           img: 'https://www.deloks.ru/upload/iblock/e40/i6p1072dvpho3pd8r0y4pk4tu8zebra6/chay_saito_milky_oolong_zelenyy_25_paketikov_7_full.jpg',
           description:
+
             'Частично ферментированный чай с комплексным вкусом от сладкого до цветочного, дарящий ощущения спокойствия.',
           comm: 'Хороший баланс между зеленым и черным чаем.',
           coordX: 120.9605,
@@ -65,6 +70,7 @@ module.exports = {
           comm: 'Идеален для поднятия настроения днем.',
           coordX: 76.9450,
           coordY: 43.2220,
+
         },
         {
           title: 'Matcha',
@@ -95,6 +101,7 @@ module.exports = {
           comm: 'Идеален для релаксации.',
           coordX: -122.9154,
           coordY: 49.1417,
+
         },
         {
           title: 'Earl Grey',
@@ -105,12 +112,14 @@ module.exports = {
           comm: 'Классический выбор для любителей чая.',
           coordX: 50.0880,
           coordY: 14.4208,
+
         },
         {
           title: 'Rooibos Tea',
           place: 'South Africa',
           img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIXWtedjDzvYukl4FMfVGnExlILL9DCtxOhw&s',
           description:
+
             'Естественно без кофеина, ройбуш богат антиоксидантами и имеет сладкий, ореховый вкус, создавая расслабляющий эффект.',
           comm: 'Отличная альтернатива черному чаю.',
           coordX: 25.9075,
@@ -125,15 +134,18 @@ module.exports = {
           comm: 'Идеален для тех, кто ценит дымные вкусы.',
           coordX: 149.1354,
           coordY: -35.2817,
+
         },
         {
           title: 'Chamomile Tea',
           place: 'Moscow',
           img: 'https://www.auchan.ru/f/c/insecure/w:620/plain/https://www.auchan.ru/files/original/24245467',
           description:
+
             'Успокаивающий травяной чай, известный своим расслабляющим эффектом, часто используется для улучшения сна, даря спокойствие.',
           comm: 'Лучше всего потреблять перед сном.',
           coordX: 37.6173,
+
           coordY: 55.7558,
         },
         {
@@ -141,13 +153,16 @@ module.exports = {
           place: 'Spb',
           img: 'https://ld-prestashop.template-help.com/prestashop_64651/img/p/1/3/7/137-tm_thickbox_default.jpg',
           description:
+
             'Бодрящий травяной чай из листьев мяты перечной, известный своими преимуществами для пищеварения, дарящий освежающее расслабление.',
           comm: 'Отлично успокаивает расстроенный желудок.',
           coordX: 30.3158,
+
           coordY: 59.9342,
         },
         {
           title: 'Yerba Mate',
+
           place: 'Italia',
           img: 'https://avatars.mds.yandex.net/i?id=cf2397ac1fe0ca965e7c733673d0589c41a27747-10261182-images-thumbs&n=13  ',
           description:
@@ -155,6 +170,7 @@ module.exports = {
           comm: 'Популярен среди атлетов для энергии и фокуса.',
           coordX: 12.5101,
           coordY: 41.8900,
+
         },
       ],
 
@@ -163,6 +179,6 @@ module.exports = {
   },
 
   async down(queryInterface, Sequelize) {
-    await queryInterface.bulkDelete("Teas", null, {});
+    await queryInterface.bulkDelete('Teas', null, {});
   },
 };

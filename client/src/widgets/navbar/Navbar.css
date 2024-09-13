@@ -27,15 +27,18 @@
 }
 
 .navbar-links .nav-link {
-  color: white;
-  text-decoration: none;
-  font-size: 1.7rem;
-  transition: 0.5s ease;
+
+    color: white;
+    text-decoration: none;
+    font-size: 1.7rem;
+    transition: 0.5s ease;
 }
 
 .nav-link:hover {
-  color: #ffe372;
-  transition: 0.5s ease;
+    color: #ffe372;
+    transition: 0.5s ease;
+
+ 
 }
 
 /* button */

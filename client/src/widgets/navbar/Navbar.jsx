@@ -1,10 +1,10 @@
-import React, { useContext } from "react";
 
-import { NavLink, useNavigate } from "react-router-dom";
+import React, { useContext } from 'react';
+import { NavLink, useNavigate } from 'react-router-dom';
+import { AppContext } from '../../app/AppContext';
+import { axiosRequest } from '../../services/axiosInstance';
+import './Navbar.css';
 
-import { AppContext } from "../../app/AppContext";
-import { axiosRequest } from "../../services/axiosInstance";
-import "./Navbar.css";
 
 function Navbar() {
   const { user, setUser } = useContext(AppContext);
@@ -15,7 +15,9 @@ function Navbar() {
       const response = await axiosRequest.delete("/auth/logout");
       if (response.status === 200) {
         setUser(null);
+
         navigate("/");
+
         return;
       }
     } catch ({ response }) {
@@ -43,6 +45,8 @@ function Navbar() {
           TeaStore
         </NavLink>
       </div>
+
+
       <ul className="navbar-links">
         <li>
           <NavLink to="/" className="nav-link">
@@ -52,15 +56,20 @@ function Navbar() {
         </li>
 
         <li>
-          <NavLink to="/teas" className="nav-link">
+
+          <NavLink to='/teas' className='nav-link'>
+
             Чай
           </NavLink>
         </li>
         <li>
-          <NavLink to="/map" className="nav-link">
+
+          <NavLink to='/map' className='nav-link'>
+
             Карта
           </NavLink>
         </li>
+
 
 
        
@@ -75,6 +84,7 @@ function Navbar() {
         <li className="navbar-fav">
           <NavLink to="/favorites" className="nav-link">
             {HeartIcon}
+
 
           </NavLink>
         </li>

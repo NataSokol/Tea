@@ -1,4 +1,3 @@
-// src/MapComponent.jsx
 import React, { useEffect, useRef, useState } from "react";
 import "ol/ol.css";
 import { fromLonLat } from "ol/proj";
@@ -16,7 +15,6 @@ import { pointerMove } from "ol/events/condition";
 import { useNavigate } from "react-router-dom";
 
 const MapComponent = ({ teas, setTeas }) => {
-  console.log(teas);
 
   const navigate = useNavigate();
   const mapRef = useRef(null); // Реф для карты
@@ -125,6 +123,7 @@ const MapComponent = ({ teas, setTeas }) => {
           <img src={popup.img} alt="kartinka" style={{ width: "100%", height: "auto" }}/>
 
           <div  style={{ fontSize: "12px" }}>
+
             <strong>{popup.title}</strong>
           </div>
         </div>

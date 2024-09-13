@@ -2,14 +2,15 @@ import React, { useContext, useEffect, useState } from "react";
 import { axiosRequest } from "../../services/axiosInstance";
 import OneTeaPage from "./OneTeaPage";
 import { AppContext } from "../../app/AppContext";
-
+import '../css/FavoritsPage.css'
 import { Link } from "react-router-dom";
+
 
 function FavoritsPage({teas, setTeas}) { 
 
 
 
-import '../css/FavoritsPage.css'
+
 
 
   const { user } = useContext(AppContext);
@@ -19,12 +20,10 @@ import '../css/FavoritsPage.css'
 
   return (
 
+
     <div>
+    <h1 className="favorite__title">Любимчики</h1>
     {user ? ( 
-
-    <>
-      <h1 className="favorite__title">Любимчики</h1>
-
       <div className="teas-page-card-container">
         {teas &&
           teas.map((tea) => {
@@ -45,6 +44,9 @@ import '../css/FavoritsPage.css'
               }
                return null
           })}
+
+   
+
       </div>) 
       : (  <div>
         <div>Лайков нет( </div>
@@ -63,7 +65,6 @@ import '../css/FavoritsPage.css'
  </div>
 )
         
-  
 }
 
 export default FavoritsPage;

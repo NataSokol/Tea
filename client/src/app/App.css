@@ -1,0 +1,26 @@
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Высота приложения на весь экран */
+}
+
+.main-content {
+  flex: 1; /* Главный контент займет все оставшееся пространство */
+}
+
+.footer {
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+  margin-top: auto; /* Это поможет футеру оставаться внизу */
+}
+
+

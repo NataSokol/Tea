@@ -6,7 +6,6 @@
 .teas-page-header {
   text-align: center;
   margin-bottom: 20px;
-
 }
 
 .teas-page-header h1 {
@@ -20,17 +19,20 @@
   text-align: center;
   border: none;
   cursor: pointer;
+  /* font-weight: bold; Или */
+  /* font-weight: 700; */
 }
 
 .teas-page-button button {
-  background-color: #4caf50; /* Зеленый цвет */
+  background-color: #317033; /* Зеленый цвет */
   color: white;
-  font-size: 1.2rem;
+  font-size: 14px;
   padding: 12px 24px;
   border: none;
   border-radius: 8px;
   cursor: pointer;
   transition: background-color 0.3s, transform 0.2s;
+  font-weight: bold;
 }
 
 .teas-page-button button:hover {

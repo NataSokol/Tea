@@ -21,14 +21,14 @@ module.exports = {
           password: await bcrypt.hash("123", 8),
           avatar:
             "https://creatorset.com/cdn/shop/files/Screenshot_2024-04-24_173231_1114x.png?v=1713973029",
-          isAdmin: false,
+          isAdmin: true,
         },
         {
           name: "GegorGan",
           email: "egor_ne@mail.ru",
           password: await bcrypt.hash("123", 8),
           avatar: "https://imgflip.com/s/meme/Smiling-Cat.jpg",
-          isAdmin: false,
+          isAdmin: true,
         },
       ],
       {}

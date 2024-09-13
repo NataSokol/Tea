@@ -1,4 +1,5 @@
 import React from "react";
+
 import "../css/MainPage.css";
 function MainPage() {
   // Генерируем 10 элементов с текстом "АУФ" в случайных позициях
@@ -41,6 +42,7 @@ function MainPage() {
         {aufElements}
       </div>
     </>
+
   );
 }
 

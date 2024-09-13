@@ -69,7 +69,9 @@ function RegistrationPage() {
         />
         <input
           type="text"
+
           placeholder="Введите ссылку на фото"
+
           value={avatar}
           onChange={(e) => setAvatar(e.target.value)}
           className="registration-form__input"
