@@ -110,20 +110,21 @@ const MapComponent = ({ teas, setTeas }) => {
       <div ref={mapRef} style={{ width: "100%", height: "1000px" }} />
       {popup.visible && (
         <div
-          style={{
-            position: "absolute",
-            background: "white",
-            padding: "10px",
-            border: "1px solid black",
-            borderRadius: "3px",
-            transform: "translate(-50%, -150%)",
-            top: `${popup.position[1]}px`,
-            left: `${popup.position[0]}px`,
+        style={{
+          position: "absolute",
+          background: "white",
+          padding: "5px", // Уменьшите отступы
+          border: "1px solid black",
+          borderRadius: "3px",
+          transform: "translate(-50%, -110%)", // Увеличьте значение для дополнительного отступа
+          top: `${popup.position[1]}px`,
+          left: `${popup.position[0]}px`,
+          width: "150px", // Установите фиксированную ширину
           }}
         >
-          <img src={popup.img} alt="kartinka" />
+          <img src={popup.img} alt="kartinka" style={{ width: "100%", height: "auto" }}/>
 
-          <div>
+          <div  style={{ fontSize: "12px" }}>
             <strong>{popup.title}</strong>
           </div>
         </div>

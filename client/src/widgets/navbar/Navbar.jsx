@@ -1,7 +1,5 @@
 import React, { useContext } from "react";
 
-
-
 import { NavLink, useNavigate } from "react-router-dom";
 
 import { AppContext } from "../../app/AppContext";
@@ -34,43 +32,36 @@ function Navbar() {
       </div>
       <ul className="navbar-links">
         <li>
-          <NavLink to="/" className="nav-link">Главная
+          <NavLink to="/" className="nav-link">
+            Главная
           </NavLink>
         </li>
 
-     
-         
-           <li>
+        <li>
           <NavLink to="/favorites" className="nav-link">
             favorites
           </NavLink>
         </li>
-       
 
-            
         <li>
           <NavLink to="/teas" className="nav-link">
             Чай
-
           </NavLink>
         </li>
         <li>
           <NavLink to="/map" className="nav-link">
-
             Карта
           </NavLink>
         </li>
-        
-  
-         
+
         <li>
           <NavLink to="/authorization" className="nav-link">
             Авторизация
-
           </NavLink>
         </li>
       </ul>
       {user ? (
+        
         <div className="user">
           <span className="span-hello">{`Добро пожаловать, ${user.name}!`}</span>
           <button className="logout" onClick={onHandleLogout}>

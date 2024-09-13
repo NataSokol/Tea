@@ -15,7 +15,6 @@ import FavoritsPage from "../pages/tea/FavoritsPage";
 
 import MainPage from "../pages/main/MainPage";
 
-
 function App() {
   const [user, setUser] = useState(undefined);
   const [teas, setTeas] = useState([]);
@@ -49,10 +48,9 @@ function App() {
       <AppContext.Provider value={{ user, setUser }}>
         <Navbar />
         <Routes>
-          <Route path="/" element={<MainPage />}/>
+          <Route path="/" element={<MainPage />} />
           <Route path="/registration" element={<RegistrationPage />} />
           <Route path="/authorization" element={<AuthorizationPage />} />
-          
 
           <Route
             path="/teas"
