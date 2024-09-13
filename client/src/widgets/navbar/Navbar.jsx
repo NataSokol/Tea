@@ -59,11 +59,13 @@ function Navbar() {
             Карта
           </NavLink>
         </li>
-        <li>
-          <NavLink to="/authorization" className="nav-link">
-            Авторизация
-          </NavLink>
-        </li>
+        {!user ? (
+          <li>
+            <NavLink to="/authorization" className="nav-link">
+              Авторизация
+            </NavLink>
+          </li>
+        ) : null}
         <li className="navbar-fav">
           <NavLink to="/favorites" className="nav-link">
             {HeartIcon}
