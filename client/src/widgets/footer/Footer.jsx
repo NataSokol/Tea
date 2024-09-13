@@ -12,9 +12,9 @@ function Footer() {
           </p>
         </div>
         <div className='footer-right'>
-          <a href='https://github.com/NataSokol' className='footer-link'>TeamLead Nataha</a>
-          <a href='https://github.com/sadmaloy' className='footer-link'>Rostik</a>
-          <a href='https://github.com/excomunicad0' className='footer-link'>Egorius</a>
+          <a href='https://github.com/NataSokol' className='footer-link'  target='_blank' rel='noopener noreferrer'>TeamLead Nataha</a>
+          <a href='https://github.com/sadmaloy' className='footer-link' target='_blank' rel='noopener noreferrer'>Rostik</a>
+          <a href='https://github.com/excomunicad0' className='footer-link' target='_blank' rel='noopener noreferrer'>Egorius</a>
         </div>
       </div>
     </footer>
