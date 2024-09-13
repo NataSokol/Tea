@@ -1,7 +1,7 @@
-import React, { useContext, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { axiosRequest } from "../../services/axiosInstance";
-import { AppContext } from "../../app/AppContext";
+import React, { useContext, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { axiosRequest } from '../../services/axiosInstance';
+import { AppContext } from '../../app/AppContext';
 
 function OneTeaPage({ teas, setTeas, tea, flag }) {
   const { user } = useContext(AppContext);
@@ -16,7 +16,7 @@ function OneTeaPage({ teas, setTeas, tea, flag }) {
       teaId: tea.id,
     });
 
-    if (data.message === "success") {
+    if (data.message === 'success') {
       setTeas((prev) =>
         prev.map((el) =>
           el.id === tea.id
@@ -45,22 +45,34 @@ function OneTeaPage({ teas, setTeas, tea, flag }) {
     );
     setLiked((prev) => !prev);
   };
-
   return (
-    <>
-      <img src={tea.img} alt="kartinka" />
-      <h2>
-        <Link to={`/teas/${tea.id}`}>{tea.title}</Link>
-      </h2>
-      <p>{tea.description}</p>
-      <div>{tea.TeaLikes.length}</div>
-
-      {liked ? (
-        <button onClick={UnLike}>❤️</button>
-      ) : (
-        <button onClick={likeTea}>🤍</button>
-      )}
-    </>
+    <div className='tea-card'>
+      <div className='tea-card-header'>
+        <h2>
+          <Link to={`/teas/${tea.id}`} className='tea-card-title'>
+            {tea.title}
+          </Link>
+        </h2>
+      </div>
+      <div className='tea-card-image'>
+        <img src={tea.img} alt='kartinka' />
+      </div>
+      <div className='tea-card-content'>
+        <p>{tea.description}</p>
+      </div>
+      <div className='tea-card-footer'>
+        <div className='tea-likes-count'>{tea.TeaLikes.length}</div>
+        {liked ? (
+          <button className='like-button' onClick={UnLike}>
+            ❤️
+          </button>
+        ) : (
+          <button className='like-button' onClick={likeTea}>
+            🤍
+          </button>
+        )}
+      </div>
+    </div>
   );
 }
 

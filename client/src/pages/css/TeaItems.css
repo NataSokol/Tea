@@ -1,0 +1,9 @@
+.tea-item-container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #DDD;
+    border-radius: 8px;
+    background-color: #FFF;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1)
+}

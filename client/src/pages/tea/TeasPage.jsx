@@ -3,6 +3,7 @@ import { AppContext } from '../../app/AppContext';
 import OneTeaPage from './OneTeaPage';
 import ModalWindow from '../../shared/ui/ModalWindow';
 import TeaFromAdd from './TeaFromAdd';
+import '../css/TeasPage.css'
 
 const TeasPage = ({ teas, setTeas }) => {
   const [active, setActive] = useState(false);
@@ -12,15 +13,17 @@ const TeasPage = ({ teas, setTeas }) => {
   };
 
   return (
-    <div>
-      <h1>TeasPage</h1>
-      <div>
+    <div className='teas-page-container'>
+      <div className='teas-page-header'>
+        <h1>TeasPage</h1>
+      </div>
+      <div className='teas-page-button'>
         {user?.isAdmin && <button onClick={isActive}>Create</button>}
         <ModalWindow active={active} setActive={setActive}>
           <TeaFromAdd setTeas={setTeas} setActive={setActive} />
         </ModalWindow>
       </div>
-      <div>
+      <div className='teas-page-card-container'>
         {teas &&
           teas.map((tea) => {
             const isLiked =
@@ -32,6 +35,7 @@ const TeasPage = ({ teas, setTeas }) => {
                 setTeas={setTeas}
                 user={user}
                 flag={isLiked}
+                className='tea-card'
               />
             );
           })}

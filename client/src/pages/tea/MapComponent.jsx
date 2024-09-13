@@ -15,10 +15,7 @@ import { Select } from "ol/interaction";
 import { pointerMove } from "ol/events/condition";
 import { useNavigate } from "react-router-dom";
 
-const MapComponent = ({ teas, setTeas }) => {
-  console.log(teas);
-  
-  
+const MapComponent = ({ teas, setTeas }) => {  
   const navigate = useNavigate();
   const mapRef = useRef(null); // Реф для карты
   const [popup, setPopup] = useState({
@@ -29,9 +26,7 @@ const MapComponent = ({ teas, setTeas }) => {
   });
 
   useEffect(() => {
-
     const coordinates = teas;
-
     const features = coordinates.map((coord) => {
       const feature = new Feature({
         geometry: new Point(fromLonLat([coord.coordX, coord.coordY])),
@@ -47,7 +42,6 @@ const MapComponent = ({ teas, setTeas }) => {
       feature.set("title", coord.title);
       feature.set("description", coord.description);
       feature.set("id", coord.id);
-
       return feature;
     });
 
