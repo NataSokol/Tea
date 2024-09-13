@@ -10,7 +10,11 @@ import TeaItems from "../pages/tea/TeaItems";
 import Navbar from "../widgets/navbar/Navbar";
 import MapComponent from "../pages/tea/MapComponent";
 import "./App.css";
+
+import FavoritsPage from "../pages/tea/FavoritsPage";
+
 import MainPage from "../pages/main/MainPage";
+
 
 function App() {
   const [user, setUser] = useState(undefined);
@@ -48,6 +52,7 @@ function App() {
           <Route path="/" element={<MainPage />}/>
           <Route path="/registration" element={<RegistrationPage />} />
           <Route path="/authorization" element={<AuthorizationPage />} />
+          
 
           <Route
             path="/teas"
@@ -56,6 +61,10 @@ function App() {
           <Route
             path="/teas/:id"
             element={<TeaItems teas={teas} setTeas={setTeas} />}
+          />
+          <Route
+            path="/favorites"
+            element={<FavoritsPage teas={teas} setTeas={setTeas} />}
           />
           <Route
             path="/map"
