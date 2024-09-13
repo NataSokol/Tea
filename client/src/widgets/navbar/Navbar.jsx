@@ -47,8 +47,10 @@ function Navbar() {
         <li>
           <NavLink to="/" className="nav-link">
             Главная
+
           </NavLink>
         </li>
+
         <li>
           <NavLink to="/teas" className="nav-link">
             Чай
@@ -59,6 +61,10 @@ function Navbar() {
             Карта
           </NavLink>
         </li>
+
+
+       
+
         {!user ? (
           <li>
             <NavLink to="/authorization" className="nav-link">
@@ -69,10 +75,12 @@ function Navbar() {
         <li className="navbar-fav">
           <NavLink to="/favorites" className="nav-link">
             {HeartIcon}
+
           </NavLink>
         </li>
       </ul>
       {user ? (
+        
         <div className="user">
           <span className="span-hello">{`Добро пожаловать, ${user.name}!`}</span>
           <button className="logout" onClick={onHandleLogout}>
