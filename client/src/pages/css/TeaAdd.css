@@ -1,0 +1,74 @@
+/* форма */
+.form__add {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 350px;
+  height: 370px;
+  max-width: 320px;
+  margin: 0 auto;
+  padding: 17px;
+  background-color: #f4f4f4;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* инпут */
+.form__add input[type='text'] {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  width: 100%;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease-in-out;
+}
+
+.form__add input[type='text']:focus {
+  border-color: #38b43d;
+  outline: none;
+}
+
+/* кнопка */
+.buttons__wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+/* кнопка загрузки */
+.file_upload {
+  text-align: center;
+  margin-top: 20px;
+  width: 93%;
+  display: inline-block;
+  padding: 10px 10px;
+  cursor: pointer;
+  background-color: #317033;
+  color: white;
+  border-radius: 7px;
+  font-size: 12px;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.file_upload:hover {
+  background-color: #45a049;
+  transform: scale(1.05);
+}
+
+/* кнопка Add */
+.button_add {
+  padding: 10px 10px;
+  cursor: pointer;
+  background-color: #317033;
+  color: white;
+  border-radius: 7px;
+  border: none;
+  font-size: 12px;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.button_add:hover {
+  background-color: #45a049;
+}
