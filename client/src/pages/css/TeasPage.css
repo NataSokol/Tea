@@ -1,0 +1,133 @@
+.teas-page-container {
+  padding: 20px;
+  background-color: #f5f5f5;
+}
+
+.teas-page-header {
+  text-align: center;
+  margin-bottom: 20px;
+
+}
+
+.teas-page-header h1 {
+  font-size: 2rem;
+  color: #333;
+}
+
+/* button Create */
+.teas-page-button {
+  margin-bottom: 20px;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+}
+
+.teas-page-button button {
+  background-color: #4caf50; /* Зеленый цвет */
+  color: white;
+  font-size: 1.2rem;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.teas-page-button button:hover {
+  background-color: #45a049; /* Более темный зеленый при наведении */
+  transform: scale(1.05); /* Легкое увеличение кнопки при наведении */
+}
+
+.teas-page-button button:active {
+  transform: scale(1); /* Возвращение размера при клике */
+  background-color: #3e8e41; /* Цвет при активном нажатии */
+}
+
+/* card */
+.teas-page-card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+/* Общий стиль карточки */
+.tea-card {
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  max-width: 300px;
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.3s;
+}
+
+.tea-card:hover {
+  transform: scale(1.05);
+}
+
+/* Заголовок карточки */
+.tea-card-header {
+  background-color: #333;
+  padding: 10px;
+  height: 35px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tea-card-title {
+  color: white;
+  text-decoration: none;
+  font-size: 1.3rem;
+}
+
+.tea-card-title:hover {
+  text-decoration: underline;
+}
+
+/* Изображение чая */
+.tea-card-image img {
+  width: 300px;
+  height: 300px;
+  display: block;
+}
+
+/* Описание чая */
+.tea-card-content {
+  padding: 15px;
+  color: #666;
+  font-size: 15px;
+  background-color: #fff;
+}
+
+/* Нижняя часть карточки: лайк и счетчик */
+.tea-card-footer {
+  display: flex;
+  justify-content: space-between;
+  height: 25px;
+  align-items: center;
+  padding: 10px 15px;
+  background-color: #eee;
+}
+
+.tea-likes-count {
+  font-size: 1rem;
+  color: #333;
+}
+
+.like-button {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.like-button:hover {
+  transform: scale(1.2);
+}
