@@ -1,3 +1,4 @@
+
 import { AppContext } from './AppContext';
 import { Routes, Route } from 'react-router-dom';
 import { useEffect, useState } from 'react';
@@ -13,6 +14,8 @@ import FavoritsPage from '../pages/tea/FavoritsPage';
 import MainPage from '../pages/main/MainPage';
 import Footer from '../widgets/footer/Footer';
 // import './App.css';
+
+import NotFound from "../pages/notFound/notFound";
 
 function App() {
   const [user, setUser] = useState(undefined);
@@ -45,6 +48,7 @@ function App() {
   return (
     <>
       <AppContext.Provider value={{ user, setUser }}>
+
         <div id='root'>
           <Navbar />
           <main className='main-container'>
@@ -69,10 +73,13 @@ function App() {
                 path='/map'
                 element={<MapComponent teas={teas} setTeas={setTeas} />}
               />
+                 <Route path="*" element={<NotFound />} />
+
             </Routes>
           </main>
           <Footer />
         </div>
+
       </AppContext.Provider>
     </>
   );

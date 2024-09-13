@@ -1,31 +1,33 @@
 /* navbar */
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    background-color: #62cf66;
-    /* color: white; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #62cf66;
+  /* color: white; */
 }
 
 .navbar-brand .logo {
-    font-size: 2.5rem;
-    color: white;
-    text-decoration: none;
+  font-size: 2.5rem;
+  color: white;
+  text-decoration: none;
 }
 
 .navbar-links {
-    list-style: none;
-    font-size: 10px;
-    display: flex;
-    gap: 75px;
-    position: absolute;
-    left: 30%;
-    margin-left: auto;
-    /* transform: translateX((-50%)); */
+  list-style: none;
+  font-size: 10px;
+  display: flex;
+  align-items: center;
+  gap: 75px;
+  position: absolute;
+  left: 30%;
+  margin-left: auto;
+  /* transform: translateX((-50%)); */
 }
 
 .navbar-links .nav-link {
+
     color: white;
     text-decoration: none;
     font-size: 1.7rem;
@@ -35,32 +37,50 @@
 .nav-link:hover {
     color: #ffe372;
     transition: 0.5s ease;
+
+ 
 }
 
 /* button */
 
 .user {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-left: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: 20px;
 }
 
 .logout {
-    background-color: #cf6262;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
-    border-radius: 4px;
+  background-color: #ff7c7c;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: 0.5s ease;
 }
 
 .logout:hover {
-    background-color: #cfb262;
+  background-color: #ff1515;
+  transition: 0.5s ease;
 }
 
 .span-hello {
-    display: flex;
-    margin-right: 20px;
-    color: white;
+  display: flex;
+  margin-right: 20px;
+  color: white;
+}
+
+.navbar__favorites {
+  cursor: pointer; /* Изменяет курсор при наведении */
+  transition: fill 0.3s ease; /* Плавный переход цвета заполнения */
+}
+
+.navbar__favorites:hover {
+  fill: red; /* Цвет заполнения при наведении */
+}
+
+.navbar-fav {
+  width: 30px;
+  height: 30px;
 }
